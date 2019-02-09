@@ -419,7 +419,18 @@ def create_regions(world):
         create_ow_region('Outside Snowhead Entrance Region (Frozen)', [], ['Frozen Outside SH To Central', 'Frozen Outside SH To SH']),
         
         create_dungeon_region('SH Entrance Room', [], ['SH Freezard Bridge', 'SH Central Tower', 'SH Blocks On Ice', 'SH Exit To Frozen Outside SH', 'SH Boss Warp']),
-        create_dungeon_region
+        create_dungeon_region('SH Freezard Bridge', ['SH SF1', 'SH SF2', 'Freezard Key Chest'], ['SH Entrance Room', 'SH Lift Room', 'SH Central Tower']),
+        create_dungeon_region('SH Lift Room', ['SH SF3', 'Map Chest', 'SH SF4'], ['SH Freezard Bridge', 'SH Central Tower']),
+        create_dungeon_region('SH Central Tower', ['SH SF5', 'SH SF6'], ['SH Entrance Room', 'SH Freezard Bridge', 'SH Lift Room', 'SH Torch Door Room',
+                             'SH 2 Stack Push Room', 'SH Pound Puzzle Room', 'SH Wizzrobe 1 Room', 'SH Snow Guys Room', 'SH Dinalfos Room', 
+                                         'SH Wizzrobe 2 Room', 'SH Boss Room']),
+        create_dungeon_region('SH 2 Stack Push Room', ['Small Key Chest', 'SH SF7'], ['SH Central Tower', 'SH Blocks On Ice']),
+        create_dungeon_region('SH Torch Door Room', ['SH SF8'], ['SH Central Tower']
+        create_dungeon_region('SH Blocks On Ice', ['Compass Chest', 'SH SF9', 'SH SF10'], ['SH Entrance Room', 'SH 2 Stack Push Room', 'SH Icicles Room']),
+        create_dungeon_region('SH Icicles Room', ['Small Key Chest', 'SH SF11'], ['SH Blocks On Ice', 'SH Pound Puzzle Room']),
+        create_dungeon_region('SH Pound Puzzle Room', ['SH SF12'], ['SH Icicles Room', 'SH Central Tower']),
+        create dungeon_region('SH Wizzrobe 1 Room', ['Fire Arrow Chest'], ['SH Central Tower']),
+        
 
         create_ow_region('Mountain Village',
             [],  # frog choir hp will be found in the thawed version of this map
