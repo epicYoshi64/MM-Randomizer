@@ -51,8 +51,8 @@ class World(object):
             self.zoracolor, self.zoratuniccolor,
             self.zorafincolor, self.boomerangcolor,
             self.deitycolor]
-        # self.tatl_colors = [self.tatlcolordefault, self.tatlcolorenemy, self.tatlcolornpc, self.tatlcolorprop, self.tatlcolorboss]
-        # self.navi_hint_sounds = [self.navisfxoverworld, self.navisfxenemytarget]
+        self.tatl_colors = [self.tatlcolordefault, self.tatlcolorenemy, self.tatlcolornpc, self.tatlcolorprop, self.tatlcolorboss]
+        self.tatl_hint_sounds = [self.tatlsfxoverworld, self.tatlsfxenemytarget]
         self.can_take_damage = True
         self.keys_placed = False
         self.spoiler = Spoiler(self)
@@ -576,9 +576,6 @@ class CollectionState(object):
         if(self.world.hints == 'mask'):
             # has the mask of truth
             return self.has('Mask of Truth')
-        elif(self.world.hints == 'agony'):
-            # has the Stone of Agony
-            return self.has('Stone of Agony')
         return True
 
     # Be careful using this function. It will not collect any

@@ -642,43 +642,43 @@ Select the color of Link's Goron Tunic. (default: Goron Red)
 Select the color of Link's Zora Tunic. (default: Zora Blue)
 
 ```
---navicolordefault [{'Random Choice', 'Completely Random', 'Gold', 'White', 'Green', 'Light Blue', 'Yellow', 'Red', 'Magenta', 'Black', 'Tatl', 'Tael', 'Fi', 'Ciela', 'Epona', 'Ezlo', 'King of Red Lions', 'Linebeck', 'Loftwing', 'Midna', 'Phantom Zelda'}]
+--tatlcolordefault [{'Random Choice', 'Completely Random', 'Gold', 'White', 'Green', 'Light Blue', 'Yellow', 'Red', 'Magenta', 'Black', 'Tatl', 'Tael', 'Fi', 'Ciela', 'Epona', 'Ezlo', 'King of Red Lions', 'Linebeck', 'Loftwing', 'Midna', 'Phantom Zelda'}]
 ```
 
-Select the color of Navi in idle. (default: White)
+Select the color of Tatl in idle. (default: White)
 
 ```
---navicolorenemy [{'Random Choice', 'Completely Random', 'Gold', 'White', 'Green', 'Light Blue', 'Yellow', 'Red', 'Magenta', 'Black', 'Tatl', 'Tael', 'Fi', 'Ciela', 'Epona', 'Ezlo', 'King of Red Lions', 'Linebeck', 'Loftwing', 'Midna', 'Phantom Zelda'}]
+--tatlcolorenemy [{'Random Choice', 'Completely Random', 'Gold', 'White', 'Green', 'Light Blue', 'Yellow', 'Red', 'Magenta', 'Black', 'Tatl', 'Tael', 'Fi', 'Ciela', 'Epona', 'Ezlo', 'King of Red Lions', 'Linebeck', 'Loftwing', 'Midna', 'Phantom Zelda'}]
 ```
 
-Select the color of Navi when she is targeting an enemy. (default: Yellow)
+Select the color of Tatl when she is targeting an enemy. (default: Yellow)
 
 ```
---navicolornpc [{'Random Choice', 'Completely Random', 'Gold', 'White', 'Green', 'Light Blue', 'Yellow', 'Red', 'Magenta', 'Black', 'Tatl', 'Tael', 'Fi', 'Ciela', 'Epona', 'Ezlo', 'King of Red Lions', 'Linebeck', 'Loftwing', 'Midna', 'Phantom Zelda'}]
+--tatlcolornpc [{'Random Choice', 'Completely Random', 'Gold', 'White', 'Green', 'Light Blue', 'Yellow', 'Red', 'Magenta', 'Black', 'Tatl', 'Tael', 'Fi', 'Ciela', 'Epona', 'Ezlo', 'King of Red Lions', 'Linebeck', 'Loftwing', 'Midna', 'Phantom Zelda'}]
 ```
 
-Select the color of Navi when she is targeting an NPC. (default: Light Blue)
+Select the color of Tatl when she is targeting an NPC. (default: Light Blue)
 
 ```
---navicolorprop [{'Random Choice', 'Completely Random', 'Gold', 'White', 'Green', 'Light Blue', 'Yellow', 'Red', 'Magenta', 'Black', 'Tatl', 'Tael', 'Fi', 'Ciela', 'Epona', 'Ezlo', 'King of Red Lions', 'Linebeck', 'Loftwing', 'Midna', 'Phantom Zelda'}]
+--tatlcolorprop [{'Random Choice', 'Completely Random', 'Gold', 'White', 'Green', 'Light Blue', 'Yellow', 'Red', 'Magenta', 'Black', 'Tatl', 'Tael', 'Fi', 'Ciela', 'Epona', 'Ezlo', 'King of Red Lions', 'Linebeck', 'Loftwing', 'Midna', 'Phantom Zelda'}]
 ```
 
-Select the color of Navi when she is targeting a prop. (default: Green)
+Select the color of Tatl when she is targeting a prop. (default: Green)
 
 ```
---navisfxoverworld [{Default,Notification,Rupee,Timer,Tamborine,Recovery Heart,Carrot Refill,Navi - Hey!,Navi - Random,Zelda - Gasp,Cluck,Mweep!,Random,None}]
+--tatlsfxoverworld [{Default,Notification,Rupee,Timer,Tamborine,Recovery Heart,Carrot Refill,Tatl - Hey!,Tatl - Random,Zelda - Gasp,Cluck,Mweep!,Random,None}]
 ```
 
-Select the sound effect that plays when Navi wishes to speak with the player. (default: Default)
+Select the sound effect that plays when Tatl wishes to speak with the player. (default: Default)
 
 ```
---navisfxenemytarget [{Default,Notification,Rupee,Timer,Tamborine,Recovery Heart,Carrot Refill,Navi - Hey!,Navi - Random,Zelda - Gasp,Cluck,Mweep!,Random,None}]
+--tatlsfxenemytarget [{Default,Notification,Rupee,Timer,Tamborine,Recovery Heart,Carrot Refill,Tatl - Hey!,Tatl - Random,Zelda - Gasp,Cluck,Mweep!,Random,None}]
 ```
 
-Select the sound effect that plays when Navi targets an enemy. (default: Default)
+Select the sound effect that plays when Tatl targets an enemy. (default: Default)
 
 ```
---healthSFX [{'Default', 'Softer Beep', 'Rupee', 'Timer', 'Tamborine', 'Recovery Heart', 'Carrot Refill', 'Navi - Hey!', 'Zelda - Gasp', 'Cluck', 'Mweep!', 'Random', 'None'}]
+--healthSFX [{'Default', 'Softer Beep', 'Rupee', 'Timer', 'Tamborine', 'Recovery Heart', 'Carrot Refill', 'Tatl - Hey!', 'Zelda - Gasp', 'Cluck', 'Mweep!', 'Random', 'None'}]
 ```
 
 Select the sound effect that loops at low health. (default: Default)

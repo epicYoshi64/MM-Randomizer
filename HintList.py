@@ -95,7 +95,7 @@ hintTable = {
     'Bottle with Red Potion':                                (["a vitality vial", "a red liquid"], "a Red Potion Bottle", 'item'),
     'Bottle with Green Potion':                              (["a magic mixture", "a green liquid"], "a Green Potion Bottle", 'item'),
     'Bottle with Blue Potion':                               (["an ailment antidote", "a blue liquid"], "a Blue Potion Bottle", 'item'),
-    'Bottle with Fairy':                                     (["an imprisoned fairy", "an extra life", "Navi's cousin"], "a Fairy Bottle", 'item'),
+    'Bottle with Fairy':                                     (["an imprisoned fairy", "an extra life", "Tatl's cousin"], "a Fairy Bottle", 'item'),
     'Bottle with Fish':                                      (["an aquarium", "a deity's snack"], "a Fish Bottle", 'item'),
     'Bottle with Blue Fire':                                 (["a conflagration canteen", "an icemelt jar"], "a Blue Fire Bottle", 'item'),
     'Bottle with Bugs':                                      (["an insectarium", "Skulltula finders"], "a Bug Bottle", 'item'),

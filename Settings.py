@@ -11,6 +11,7 @@ from version import __version__
 from Utils import random_choices, local_path
 from SettingsList import setting_infos, get_setting_info
 
+
 class ArgumentDefaultsHelpFormatter(argparse.RawTextHelpFormatter):
 
     def _get_help_string(self, action):
@@ -21,6 +22,7 @@ class ArgumentDefaultsHelpFormatter(argparse.RawTextHelpFormatter):
 letters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
 index_to_letter = { i: letters[i] for i in range(32) }
 letter_to_index = { v: k for k, v in index_to_letter.items() }
+
 
 def bit_string_to_text(bits):
     # pad the bits array to be multiple of 5
@@ -35,6 +37,7 @@ def bit_string_to_text(bits):
             value |= chunk[b] << b
         result += index_to_letter[value]
     return result
+
 
 def text_to_bit_string(text):
     bits = []

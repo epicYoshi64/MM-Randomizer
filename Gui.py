@@ -129,20 +129,18 @@ def guiMain(settings=None):
     frames['aesthetic_tab_right'] = Frame(frames['aesthetic_tab'])
     adjustWindow = ttk.Frame(notebook)
     customWindow = ttk.Frame(notebook)
-    # TODO: These were in the OoT fork
-    # frames['cosmetic_tab'] = ttk.Frame(notebook)
-    # frames['SFX_tab'] = ttk.Frame(notebook)
-    # frames['cosmetic_tab_left'] = Frame(frames['cosmetic_tab'])
-    # frames['cosmetic_tab_right'] = Frame(frames['cosmetic_tab'])
+    frames['cosmetic_tab'] = ttk.Frame(notebook)
+    frames['SFX_tab'] = ttk.Frame(notebook)
+    frames['cosmetic_tab_left'] = Frame(frames['cosmetic_tab'])
+    frames['cosmetic_tab_right'] = Frame(frames['cosmetic_tab'])
     notebook.add(frames['rom_tab'], text='ROM Options')
     notebook.add(frames['rules_tab'], text='Main Rules')
     notebook.add(frames['logic_tab'], text='Detailed Logic')
     notebook.add(frames['other_tab'], text='Other')
     notebook.add(frames['tunic_tab'], text='Tunics')
     notebook.add(frames['aesthetic_tab'], text='Cosmetics')
-    # TODO: These were in the OoT fork
-    # notebook.add(frames['cosmetic_tab'], text='Cosmetic')
-    # notebook.add(frames['SFX_tab'], text='SFX')
+    notebook.add(frames['cosmetic_tab'], text='Cosmetic')
+    notebook.add(frames['SFX_tab'], text='SFX')
 
     #######################
     # Randomizer controls #
@@ -157,7 +155,7 @@ def guiMain(settings=None):
     ############
 
     # Rules Tab
-    frames['open']        = LabelFrame(frames['rules_tab'],          text='Open',              labelanchor=NW)
+    frames['skip']        = LabelFrame(frames['rules_tab'],          text='Open',              labelanchor=NW)
     frames['world']       = LabelFrame(frames['rules_tab'],          text='World',             labelanchor=NW)
     frames['shuffle']     = LabelFrame(frames['rules_tab'],          text='Shuffle',           labelanchor=NW)
 
@@ -165,10 +163,9 @@ def guiMain(settings=None):
     frames['rewards']     = LabelFrame(frames['logic_tab'],          text='Remove Specific Locations', labelanchor=NW)
     frames['tricks']      = LabelFrame(frames['logic_tab'],          text='Specific expected tricks', labelanchor=NW)
 
-    # TODO: These were in the OoT fork
     # # Logic tab
-    # frames['checks']      = LabelFrame(frames['logic_tab'],          text='Adult Trade Sequence', labelanchor=NW)
-    # frames['tricks']      = LabelFrame(frames['logic_tab'],          text='Lens of Truth',     labelanchor=NW)
+    frames['checks']      = LabelFrame(frames['logic_tab'],          text='Adult Trade Sequence', labelanchor=NW)
+    frames['tricks']      = LabelFrame(frames['logic_tab'],          text='Lens of Truth',     labelanchor=NW)
 
     # Other Tab
     frames['convenience'] = LabelFrame(frames['other_tab'],          text='Timesavers',        labelanchor=NW)
@@ -184,18 +181,16 @@ def guiMain(settings=None):
     frames['sound']       = LabelFrame(frames['aesthetic_tab_left'],  text='Music and SFX',    labelanchor=NW)
     frames['textbox']     = LabelFrame(frames['aesthetic_tab_left'],  text='Textbox Shuffle',  labelanchor=NW)
 
-    # TODO: These were in the OoT Fork
     # #Cosmetic tab
-    # frames['cosmetic']    = LabelFrame(frames['cosmetic_tab_left'],  text='General',           labelanchor=NW)
-    # frames['sword_trails']= LabelFrame(frames['cosmetic_tab_left'],  text='Sword Trail Colors',labelanchor=NW)
-    # frames['tunic_colors']= LabelFrame(frames['cosmetic_tab_right'], text='Tunics',            labelanchor=NW)
-    # frames['navi_colors'] = LabelFrame(frames['cosmetic_tab_right'], text='Navi Colors',       labelanchor=NW)
+    frames['cosmetic']    = LabelFrame(frames['cosmetic_tab_left'],  text='General',           labelanchor=NW)
+    frames['sword_trails']= LabelFrame(frames['cosmetic_tab_left'],  text='Sword Trail Colors',labelanchor=NW)
+    frames['tunic_colors']= LabelFrame(frames['cosmetic_tab_right'], text='Tunics',            labelanchor=NW)
+    frames['tatl_colors'] = LabelFrame(frames['cosmetic_tab_right'], text='Tatl Colors',       labelanchor=NW)
 
-    # TODO: These were in the OoT Fork
     # #Cosmetic tab
-    # frames['sfx']         = LabelFrame(frames['SFX_tab'],            text='General',           labelanchor=NW)
-    # frames['menu_sfx']    = LabelFrame(frames['SFX_tab'],            text='Menu',              labelanchor=NW)
-    # frames['npc_sfx']     = LabelFrame(frames['SFX_tab'],            text='NPC',               labelanchor=NW)
+    frames['sfx']         = LabelFrame(frames['SFX_tab'],            text='General',           labelanchor=NW)
+    frames['menu_sfx']    = LabelFrame(frames['SFX_tab'],            text='Menu',              labelanchor=NW)
+    frames['npc_sfx']     = LabelFrame(frames['SFX_tab'],            text='NPC',               labelanchor=NW)
 
 
     # Shared
@@ -445,12 +440,12 @@ def guiMain(settings=None):
 
     # Pack the hierarchy
     frames['shuffle'].pack(fill=BOTH,  expand=True, anchor=N, side=RIGHT,  pady=(5,1))
-    frames['open'].pack(   fill=BOTH,  expand=True, anchor=W, side=TOP,    pady=(5,1))
+    frames['skip'].pack(   fill=BOTH,  expand=True, anchor=W, side=TOP,    pady=(5,1))
     frames['world'].pack(  fill=BOTH,  expand=True, anchor=W, side=BOTTOM, pady=(5,1))
 
     # Logic tab
-    # frames['checks'].pack(fill=BOTH, expand=True, anchor=N, side=LEFT, pady=(5,1))
-    # frames['tricks'].pack(fill=BOTH, expand=True, anchor=N, side=LEFT, pady=(5,1))
+    frames['checks'].pack(fill=BOTH, expand=True, anchor=N, side=LEFT, pady=(5,1))
+    frames['tricks'].pack(fill=BOTH, expand=True, anchor=N, side=LEFT, pady=(5,1))
 
     # Other Tab
     frames['convenience'].pack(fill=BOTH, expand=True, anchor=N, side=LEFT, pady=(5,1))
@@ -466,29 +461,28 @@ def guiMain(settings=None):
     frames['aesthetic_tab_right'].pack(fill=BOTH, expand=True, anchor=W, side=RIGHT)
 
     # Aesthetics tab - Left Side
-    frames['sound'].pack(     fill=BOTH, expand=True, anchor=W, side=TOP, pady=(5,1) )
+    frames['sound'].pack(    fill=BOTH, expand=True, anchor=W, side=TOP, pady=(5,1) )
     frames['textbox'].pack(  fill=BOTH, expand=True, anchor=W, side=TOP, pady=(5,1) )
 
     # Aesthetics tab - Right Side
     frames['color'].pack( fill=BOTH, expand=True, anchor=W, side=TOP, pady=(5,1) )
 
-    # TODO: These were in the OoT fork
     # # Cosmetics tab
-    # frames['cosmetic'].pack(          fill=BOTH, expand=True, anchor=W, side=TOP)
-    # frames['cosmetic_tab_left'].pack( fill=BOTH, expand=True, anchor=W, side=LEFT)
-    # frames['cosmetic_tab_right'].pack(fill=BOTH, expand=True, anchor=W, side=RIGHT)
+    frames['cosmetic'].pack(          fill=BOTH, expand=True, anchor=W, side=TOP)
+    frames['cosmetic_tab_left'].pack( fill=BOTH, expand=True, anchor=W, side=LEFT)
+    frames['cosmetic_tab_right'].pack(fill=BOTH, expand=True, anchor=W, side=RIGHT)
 
     # # Cosmetics tab - Left Side
-    # frames['sword_trails'].pack(fill=BOTH, expand=True, anchor=W, side=TOP, pady=(5,1))
+    frames['sword_trails'].pack(fill=BOTH, expand=True, anchor=W, side=TOP, pady=(5,1))
 
     # # Cosmetics tab - Right Side
-    # frames['tunic_colors'].pack(fill=BOTH, expand=True, anchor=N, side=TOP)
-    # frames['navi_colors'].pack(fill=BOTH, expand=True, anchor=W, side=TOP, pady=(5,1))
+    frames['tunic_colors'].pack(fill=BOTH, expand=True, anchor=N, side=TOP)
+    frames['tatl_colors'].pack( fill=BOTH, expand=True, anchor=W, side=TOP, pady=(5,1))
 
     # #SFX tab
-    # frames['sfx'].pack(          fill=BOTH, expand=True, anchor=N, side=LEFT, pady=(5,1))
-    # frames['menu_sfx'].pack( fill=BOTH, expand=False, anchor=W, side=TOP, pady=(5,1))
-    # frames['npc_sfx'].pack(fill=BOTH, expand=True, anchor=W, side=BOTTOM, pady=(5,1))
+    frames['sfx'].pack(      fill=BOTH, expand=True,  anchor=N, side=LEFT,   pady=(5,1))
+    frames['menu_sfx'].pack( fill=BOTH, expand=False, anchor=W, side=TOP,    pady=(5,1))
+    frames['npc_sfx'].pack(  fill=BOTH, expand=True,  anchor=W, side=BOTTOM, pady=(5,1))
 
     notebook.pack(fill=BOTH, expand=True, padx=5, pady=5)
 

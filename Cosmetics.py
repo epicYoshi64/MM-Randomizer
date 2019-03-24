@@ -41,7 +41,7 @@ tunic_colors = {
 }
 
 
-NaviColors = {          # Inner Core Color         Outer Glow Color
+TatlColors = {          # Inner Core Color         Outer Glow Color
     "Custom Color":      (Color(0x00, 0x00, 0x00), Color(0x00, 0x00, 0x00)),
     "Gold":              (Color(0xFE, 0xCC, 0x3C), Color(0xFE, 0xC0, 0x07)),
     "White":             (Color(0xFF, 0xFF, 0xFF), Color(0x00, 0x00, 0xFF)),
@@ -88,14 +88,14 @@ def get_tunic_color_options():
     return ["Random Choice", "Completely Random"] + get_tunic_colors()
 
 
-def get_navi_colors():
-    return list(NaviColors.keys())
+def get_tatl_colors():
+    return list(TatlColors.keys())
 
 
-def get_navi_color_options():
-    return ["Random Choice", "Completely Random"] + get_navi_colors()
+def get_tatl_color_options():
+    return ["Random Choice", "Completely Random"] + get_tatl_colors()
 
-    
+
 def get_sword_colors():
     return list(sword_colors.keys())
 
@@ -160,55 +160,55 @@ def patch_tunic_colors(rom, settings, log, symbols):
         log.tunic_colors[tunic] = dict(option=tunic_option, color=''.join(['{:02X}'.format(c) for c in color]))
 
 
-def patch_navi_colors(rom, settings, log, symbols):
-    # patch navi colors
-    navi = [
-        # colors for Navi
-        ('Navi Idle', settings.navi_color_default, [0x00B5E184]), # Default
-        ('Navi Targeting Enemy', settings.navi_color_enemy,   [0x00B5E19C, 0x00B5E1BC]), # Enemy, Boss
-        ('Navi Targeting NPC', settings.navi_color_npc,     [0x00B5E194]), # NPC
-        ('Navi Targeting Prop', settings.navi_color_prop,    [0x00B5E174, 0x00B5E17C, 0x00B5E18C,
+def patch_tatl_colors(rom, settings, log, symbols):
+    # patch tatl colors
+    tatl = [
+        # colors for Tatl
+        ('Tatl Idle', settings.tatl_color_default, [0x00B5E184]), # Default
+        ('Tatl Targeting Enemy', settings.tatl_color_enemy,   [0x00B5E19C, 0x00B5E1BC]), # Enemy, Boss
+        ('Tatl Targeting NPC', settings.tatl_color_npc,     [0x00B5E194]), # NPC
+        ('Tatl Targeting Prop', settings.tatl_color_prop,    [0x00B5E174, 0x00B5E17C, 0x00B5E18C,
                                   0x00B5E1A4, 0x00B5E1AC, 0x00B5E1B4,
                                   0x00B5E1C4, 0x00B5E1CC, 0x00B5E1D4]), # Everything else
     ]
-    navi_color_list = get_navi_colors()
-    for navi_action, navi_option, navi_addresses in navi:
-        inner = navi_action in [action[0] for action in navi[0:4]]
+    tatl_color_list = get_tatl_colors()
+    for tatl_action, tatl_option, tatl_addresses in tatl:
+        inner = tatl_action in [action[0] for action in tatl[0:4]]
         # choose a random choice for the whole group
-        if navi_option == 'Random Choice':
-            navi_option = random.choice(navi_color_list)
+        if tatl_option == 'Random Choice':
+            tatl_option = random.choice(tatl_color_list)
         custom_color = False
-        for address in navi_addresses:
+        for address in tatl_addresses:
             # completely random is random for every subgroup
-            if navi_option == 'Completely Random':
+            if tatl_option == 'Completely Random':
                 colors = ([random.getrandbits(8), random.getrandbits(8), random.getrandbits(8)],
                          [random.getrandbits(8), random.getrandbits(8), random.getrandbits(8)])
-                if navi_action not in log.navi_colors:
-                    log.navi_colors[navi_action] = list()
-                log.navi_colors[navi_action].append(dict(option=navi_option, color1=''.join(['{:02X}'.format(c) for c in list(colors[0])]), color2=''.join(['{:02X}'.format(c) for c in list(colors[1])])))
+                if tatl_action not in log.tatl_colors:
+                    log.tatl_colors[tatl_action] = list()
+                log.tatl_colors[tatl_action].append(dict(option=tatl_option, color1=''.join(['{:02X}'.format(c) for c in list(colors[0])]), color2=''.join(['{:02X}'.format(c) for c in list(colors[1])])))
             # grab the color from the list
-            elif navi_option in NaviColors:
-                colors = list(NaviColors[navi_option][0]), list(NaviColors[navi_option][1])
+            elif tatl_option in TatlColors:
+                colors = list(TatlColors[tatl_option][0]), list(TatlColors[tatl_option][1])
             # build color from hex code
             else:
-                base_color = list(int(navi_option[i:i+2], 16) for i in (0, 2 ,4))
+                base_color = list(int(tatl_option[i:i+2], 16) for i in (0, 2 ,4))
                 colors = (base_color, base_color)
                 custom_color = True
 
             color = colors[0] + [0xFF] + colors[1] + [0xFF]
             rom.write_bytes(address, color)
         if custom_color:
-            navi_option = 'Custom'
-        if navi_action not in log.navi_colors:
-            log.navi_colors[navi_action] = [dict(option=navi_option, color1=''.join(['{:02X}'.format(c) for c in list(colors[0])]), color2=''.join(['{:02X}'.format(c) for c in list(colors[1])]))]
+            tatl_option = 'Custom'
+        if tatl_action not in log.tatl_colors:
+            log.tatl_colors[tatl_action] = [dict(option=tatl_option, color1=''.join(['{:02X}'.format(c) for c in list(colors[0])]), color2=''.join(['{:02X}'.format(c) for c in list(colors[1])]))]
 
 
 def patch_sword_trails(rom, settings, log, symbols):
     # patch sword trail colors
     sword_trails = [
-        ('Inner Initial Sword Trail', settings.sword_trail_color_inner, 
+        ('Inner Initial Sword Trail', settings.sword_trail_color_inner,
             [(0x00BEFF80, 0xB0, 0x40), (0x00BEFF88, 0x20, 0x00)], symbols['CFG_RAINBOW_SWORD_INNER_ENABLED']),
-        ('Outer Initial Sword Trail', settings.sword_trail_color_outer, 
+        ('Outer Initial Sword Trail', settings.sword_trail_color_outer,
             [(0x00BEFF7C, 0xB0, 0xFF), (0x00BEFF84, 0x10, 0x00)], symbols['CFG_RAINBOW_SWORD_OUTER_ENABLED']),
     ]
 
@@ -263,8 +263,8 @@ def patch_sword_trails(rom, settings, log, symbols):
 def patch_sfx(rom, settings, log, symbols):
     # Configurable Sound Effects
     sfx_config = [
-          (settings.sfx_navi_overworld, sfx.SoundHooks.NAVI_OVERWORLD),
-          (settings.sfx_navi_enemy,     sfx.SoundHooks.NAVI_ENEMY),
+          (settings.sfx_tatl_overworld, sfx.SoundHooks.NAVI_OVERWORLD),
+          (settings.sfx_tatl_enemy,     sfx.SoundHooks.NAVI_ENEMY),
           (settings.sfx_low_hp,         sfx.SoundHooks.HP_LOW),
           (settings.sfx_menu_cursor,    sfx.SoundHooks.MENU_CURSOR),
           (settings.sfx_menu_select,    sfx.SoundHooks.MENU_SELECT),
@@ -321,9 +321,9 @@ global_patch_sets = [
     patch_targeting,
     patch_music,
     patch_tunic_colors,
-    patch_navi_colors,
+    patch_tatl_colors,
     patch_sfx,
-    patch_instrument,    
+    patch_instrument,
 ]
 
 patch_sets = {
@@ -332,7 +332,7 @@ patch_sets = {
             patch_dpad,
             patch_sword_trails,
         ],
-        "symbols": {    
+        "symbols": {
             "CFG_DISPLAY_DPAD": 0x03480814,
             "CFG_RAINBOW_SWORD_INNER_ENABLED": 0x03480815,
             "CFG_RAINBOW_SWORD_OUTER_ENABLED": 0x03480816,
@@ -343,7 +343,7 @@ patch_sets = {
             patch_dpad,
             patch_sword_trails,
         ],
-        "symbols": {    
+        "symbols": {
             "CFG_DISPLAY_DPAD": 0x03481004,
             "CFG_RAINBOW_SWORD_INNER_ENABLED": 0x03481005,
             "CFG_RAINBOW_SWORD_OUTER_ENABLED": 0x03481006,
@@ -487,7 +487,7 @@ class CosmeticsLog(object):
     def __init__(self, settings):
         self.settings = settings
         self.tunic_colors = {}
-        self.navi_colors = {}
+        self.tatl_colors = {}
         self.sword_colors = {}
         self.sfx = {}
         self.bgm = {}
@@ -520,10 +520,10 @@ class CosmeticsLog(object):
             color_option_string = '{option} (#{color})'
             output += format_string.format(key=tunic+':', value=color_option_string.format(option=options['option'], color=options['color']), width=padding)
 
-        for navi_action, list in self.navi_colors.items():
+        for tatl_action, list in self.tatl_colors.items():
             for i, options in enumerate(list):
                 color_option_string = '{option} (#{color1}, #{color2})'
-                output += format_string.format(key=(navi_action+':') if i == 0 else '', value=color_option_string.format(option=options['option'], color1=options['color1'], color2=options['color2']), width=padding)
+                output += format_string.format(key=(tatl_action+':') if i == 0 else '', value=color_option_string.format(option=options['option'], color1=options['color1'], color2=options['color2']), width=padding)
 
         if 'sword_colors' in self.__dict__:
             for sword_trail, list in self.sword_colors.items():
