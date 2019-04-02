@@ -1,0 +1,29 @@
+# Comments should be made using hash signs, since that's what the parser splits on.
+# Any region defined will become a Region object
+# Any location defined will become a Location object with the region it's in as the parent_region
+#   with the key as name of the location and value as the access_rule
+# Any exit defined will become an Entrance object from the region it's in to the region that's
+#   the key string. The value string is the access rule for that entrance.
+[
+    {
+        "region_name": "Woodfall Temple",
+        "dungeon" : "Woodfall Temple",
+        "locations": {
+            # Anything in these value strings goes through "parse_rule_string()"
+            "Woodfall Temple Entrance Chest": "can_use(Hookshot) or form(Deku)",
+            "Woodfall Temple Central Room Chest": "form(Deku)",
+            "Woodfall Temple Small Key Chest": "can_use(Hookshot) or form(Deku)",
+            "Woodfall Temple Dungeon Map Chest": "can_kill_turtle()", # Deku || Explosives || Goron?
+            "Woodfall Temple Dungeon Compass Chest": "can_kill_dragonfly()",
+            "Woodfall Temple Hexagon Room Chest": "True", # Any form can kill them with neutral attacks
+            "Woodfall Temple Bow Chest": "can_kill_dinolfos()", # Any form?
+            "Woodfall Temple Boss Key Chest": "can_kill_frog_guardian()", # Deku || Goron?
+            "Odolwa Heart": "can_kill_odolwa()", # Any form?
+            "Odolwa": "can_kill_odolwa()"
+        },
+        "exits": {
+            # Anything in these value strings goes through "parse_rule_string()"
+            "Woodfall Temple Entrance": "True"
+        }
+    }
+]
