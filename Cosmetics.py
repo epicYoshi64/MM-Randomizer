@@ -501,7 +501,7 @@ class CosmeticsLog(object):
 
     def cosmetics_output(self):
         output = ''
-        output += 'OoT Randomizer Version %s - Cosmetics Log\n' % (__version__)
+        output += 'MM Randomizer Version %s - Cosmetics Log\n' % (__version__)
 
         if self.error:
             output += 'Error: %s\n' % self.error
@@ -542,7 +542,7 @@ class CosmeticsLog(object):
             output += format_string.format(key=key+':', value=value, width=padding)
 
         if self.settings.background_music == 'random':
-            #music_padding = 1 + len(max(self.bgm.keys(), key=len))
+            # music_padding = 1 + len(max(self.bgm.keys(), key=len))
             music_padding = 40
             output += '\n\nBackground Music:\n'
             for key, value in self.bgm.items():

@@ -825,51 +825,6 @@ class Entrance(object):
         return '%s' % self.name
 
 '''
-Dungeon object:
-Information about a dungeon.
-
-Used to check what kind of items need to be limited to Dungeons
-'''
-class Dungeon(object):
-
-    def __init__(self, name, regions, boss_key, small_keys, dungeon_items):
-        def to_array(obj):
-            if obj == None:
-                return []
-            if isinstance(obj, list):
-                return obj
-            else:
-                return [obj]
-
-        self.name = name
-        self.regions = regions
-        self.boss_key = to_array(boss_key)
-        self.small_keys = to_array(small_keys)
-        self.dungeon_items = to_array(dungeon_items)
-        self.major_items = 0
-
-    # Returns all Small and Boss keys of this Dungeon
-    @property
-    def keys(self):
-        return (self.small_keys + self.boss_key if self.boss_key else self.keys)
-
-    # Returns all items in this Dungeon (Keys and others)
-    @property
-    def all_items(self):
-        return self.dungeon_items + self.keys
-
-    # Returns the name of the item, if the item is found in `self.all_items`
-    def is_dungeon_item(self, item):
-        return item.name in [dungeon_item.name for dungeon_item in self.all_items]
-
-    def __str__(self):
-        return str(self.__unicode__())
-
-    def __unicode__(self):
-        return '%s' % self.name
-
-
-    '''
 Location object:
 Information about the location where an item can be or is placed.
 

@@ -429,14 +429,14 @@ class World(object):
                 # so we can't make this culling for those kinds of items.
                 duplicate_item_woth[location.item.world.id][location.item.name] = location
             if 'Bottle' in location.item.name and \
-                location.item.name not in ['Bottle with Letter', 'Bottle with Big Poe']:
-                    # Bottles can have many names but they are all generally the same in logic
-                    # The problem is that Ruto's Letter and Big Poe might not be usuable as a
-                    # Bottle immediately, so they might need to use a regular bottle in
-                    # addition to that one. Conversely finding a bottle might mean you still
-                    # need ruto's letter or big poe. So to work with this, we ignore those
-                    # two special bottles as being bottles
-                    duplicate_item_woth[location.item.world.id]['Bottle'] = location
+              location.item.name not in ['Bottle with Letter', 'Bottle with Big Poe']:
+                # Bottles can have many names but they are all generally the same in logic
+                # The problem is that Ruto's Letter and Big Poe might not be usuable as a
+                # Bottle immediately, so they might need to use a regular bottle in
+                # addition to that one. Conversely finding a bottle might mean you still
+                # need ruto's letter or big poe. So to work with this, we ignore those
+                # two special bottles as being bottles
+                duplicate_item_woth[location.item.world.id]['Bottle'] = location
 
         # generate the empty area list
         self.empty_areas = {}
