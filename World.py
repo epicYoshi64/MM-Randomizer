@@ -3,9 +3,10 @@ from Region import Region
 from Entrance import Entrance
 from Location import Location, LocationFactory
 from LocationList import business_scrubs
-from DungeonList import create_dungeons
-from Rules import set_rules, set_shop_rules
-from Item import Item
+# Commented out because not used.
+# from DungeonList import create_dungeons
+# from Rules import set_rules, set_shop_rules
+# from Item import Item
 from RuleParser import parse_rule_string
 from SettingsList import get_setting_info
 import logging
@@ -154,7 +155,7 @@ class World(object):
             item.world = self
         for region in self.regions:
             for location in region.locations:
-                if location.item != None:
+                if location.item is not None:
                     location.item.world = self
         for item in [item for dungeon in self.dungeons for item in dungeon.all_items]:
             item.world = self
@@ -165,7 +166,7 @@ class World(object):
         self.shop_prices = {}
         for region in self.regions:
             if self.shopsanity == 'random':
-                shop_item_count = random.randint(0,4)
+                shop_item_count = random.randint(0, 4)
             else:
                 shop_item_count = int(self.shopsanity)
 
@@ -247,7 +248,6 @@ class World(object):
     def get_items(self):
         return [loc.item for loc in self.get_filled_locations()] + self.itempool
 
-
     # get a list of items that should stay in their proper dungeon
     def get_restricted_dungeon_items(self):
         itempool = []
@@ -261,7 +261,6 @@ class World(object):
         for item in itempool:
             item.world = self
         return itempool
-
 
     # get a list of items that don't have to be in their proper dungeon
     def get_unrestricted_dungeon_items(self):
@@ -384,7 +383,7 @@ class World(object):
             areas[area]['locations'].append(location)
 
         # Generate area list meta data
-        for area,area_info in areas.items():
+        for area, area_info in areas.items():
             # whether an area is a dungeon is calculated to prevent too many
             # dungeon barren hints since they are quite powerful. The area
             # names don't quite match the internal dungeon names so we need to
@@ -440,7 +439,7 @@ class World(object):
 
         # generate the empty area list
         self.empty_areas = {}
-        for area,area_info in areas.items():
+        for area, area_info in areas.items():
             useless_area = True
             for location in area_info['locations']:
                 if location.item.majoritem:

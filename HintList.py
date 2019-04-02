@@ -12,7 +12,7 @@ class Hint(object):
         if isinstance(text, str):
             self.text = text
         else:
-            if choice == None:
+            if choice is None:
                 self.text = random.choice(text)
             else:
                 self.text = text[choice]
@@ -21,7 +21,7 @@ class Hint(object):
 def getHint(name, clearer_hint=False):
     textOptions, clearText, type = hintTable[name]
     if clearer_hint:
-        if clearText == None:
+        if clearText is None:
             return Hint(name, textOptions, type, 0)
         return Hint(name, clearText, type)
     else:
@@ -42,7 +42,8 @@ def getHintGroup(group, world):
     return ret
 
 
-#table of hints, format is (name, hint text, clear hint text, type of hint) there are special characters that are read for certain in game commands:
+# table of hints, format is (name, hint text, clear hint text, type of hint)
+# there are special characters that are read for certain in game commands:
 # ^ is a box break
 # & is a new line
 # @ will print the player name
@@ -254,7 +255,7 @@ hintTable = {
     '1056':                                                  ("They say that the real Phantom Ganon is bright and loud.", None, 'junkHint'),
     '1057':                                                  ("They say that walking backwards is very fast.", None, 'junkHint'),
     '1058':                                                  ("They say that leaping above the Castle Town entrance enriches most children.", None, 'junkHint'),
-                                                             #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx handy marker for how long one line should be in a text box
+                                                             # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx handy marker for how long one line should be in a text box
     'Deku Tree':                                             ("an ancient tree", "Deku Tree", 'dungeon'),
     'Dodongos Cavern':                                       ("an immense cavern", "Dodongo's Cavern", 'dungeon'),
     'Jabu Jabus Belly':                                      ("the belly of a deity", "Jabu Jabu's Belly", 'dungeon'),
@@ -267,7 +268,7 @@ hintTable = {
     'Bottom of the Well':                                    ("a shadow\'s prison", "Bottom of the Well", 'dungeon'),
     'Gerudo Training Grounds':                               ("the test of thieves", "Gerudo Training Grounds", 'dungeon'),
     'Ganons Castle':                                         ("a conquered citadel", "Ganon's Castle", 'dungeon'),
-                                                             #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx handy marker for how long one line should be in a text box
+                                                             # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx handy marker for how long one line should be in a text box
     'Queen Gohma':                                           ("One inside an #ancient tree#...^", "One in the #Deku Tree#...^", 'boss'),
     'King Dodongo':                                          ("One within an #immense cavern#...^", "One in #Dodongo's Cavern#...^", 'boss'),
     'Barinade':                                              ("One in the #belly of a deity#...^", "One in #Jabu Jabu's Belly#...^", 'boss'),
@@ -281,7 +282,7 @@ hintTable = {
     'Spiritual Stone Text End':                              ("\x13\x08Stand with the Ocarina of Time&and play the Song of Time.", None, 'boss'),
     'Medallion Text Start':                                  ("When evil rules all, an awakening&voice from the Sacred Realm will&call those destined to be Sages,&who dwell in the \x05\x41five temples\x05\x40.^", None, 'boss'),
     'Medallion Text End':                                    ("\x13\x12Together with the Hero of Time,&the awakened ones will bind&the evil and return the light&of peace to the world.", None, 'boss'),
-                                                            #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx handy marker for how long one line should be in a text box
+                                                             # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx handy marker for how long one line should be in a text box
     'Validation Line':                                       ("Hmph... Since you made it this far,&I'll let you know what glorious&prize of Ganon's you likely&missed out on in my tower.^Behold...^", None, 'validation line'),
     'Light Arrow Location':                                  ("Ha ha ha... You'll never beat me by&reflecting my lightning bolts&and unleashing the arrows from&", None, 'Light Arrow Location'),
     '2001':                                                  ("Oh! It's @.&I was expecting someone called&Sheik. Do you know what&happened to them?", None, 'ganonLine'),
@@ -323,4 +324,6 @@ def hintExclusions(world, clear_cache=False):
             hintExclusions.exclusions.append(hint.name)
 
     return hintExclusions.exclusions
+
+
 hintExclusions.exclusions = None

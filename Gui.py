@@ -826,4 +826,3 @@ if __name__ == '__main__':
         messagebox.showerror(title="Unsupported Python Version", message=str(ex))
         exit()
     guiMain()
-

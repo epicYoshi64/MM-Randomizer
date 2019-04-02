@@ -252,7 +252,7 @@ def get_good_loc_hint(spoiler, world, checked):
 
 def get_good_item_hint(spoiler, world, checked):
     locations = [location for location in world.get_filled_locations()
-            if not location.name in checked and \
+            if location.name not in checked and \
             location.item.majoritem and \
             not location.locked]
     if not locations:
@@ -271,7 +271,7 @@ def get_good_item_hint(spoiler, world, checked):
 
 def get_overworld_hint(spoiler, world, checked):
     locations = [location for location in world.get_filled_locations()
-            if not location.name in checked and \
+            if location.name not in checked and \
             location.item.type != 'Event' and \
             location.item.type != 'Shop' and \
             not location.locked and \
@@ -396,7 +396,7 @@ hint_dist_sets = {
 }
 
 
-#builds out general hints based on location and whether an item is required or not
+# builds out general hints based on location and whether an item is required or not
 def buildGossipHints(spoiler, world):
     # rebuild hint exclusion list
     hintExclusions(world, clear_cache=True)
@@ -404,7 +404,7 @@ def buildGossipHints(spoiler, world):
     world.barren_dungeon = False
 
     max_states = State.get_states_with_items([w.state for w in spoiler.worlds], [])
-    for id,stone in gossipLocations.items():
+    for id, stone in gossipLocations.items():
         stone.reachable = \
             max_states[world.id].can_reach(stone.location, resolution_hint='Location') and \
             max_states[world.id].guarantee_hint()
@@ -432,11 +432,11 @@ def buildGossipHints(spoiler, world):
     elif world.trials_random and world.trials == 0:
         add_hint(spoiler, world, stoneIDs, buildHintString("Sheik dispelled the barrier around " + colorText("Ganon's Tower", 'Yellow')  + "."), hint_dist['trial'][1], force_reachable=True)
     elif world.trials < 6 and world.trials > 3:
-        for trial,skipped in world.skipped_trials.items():
+        for trial, skipped in world.skipped_trials.items():
             if skipped:
                 add_hint(spoiler, world, stoneIDs, buildHintString("the " + colorText(trial + " Trial", 'Yellow') + " was dispelled by Sheik."), hint_dist['trial'][1], force_reachable=True)
     elif world.trials <= 3 and world.trials > 0:
-        for trial,skipped in world.skipped_trials.items():
+        for trial, skipped in world.skipped_trials.items():
             if not skipped:
                 add_hint(spoiler, world, stoneIDs, buildHintString("the " + colorText(trial + " Trial", 'Pink') + " protects Ganon's Tower."), hint_dist['trial'][1], force_reachable=True)
 
@@ -555,11 +555,11 @@ def get_raw_text(string):
         if char == '^':
             text += '\x04' # box break
         elif char == '&':
-            text += '\x01' #new line
+            text += '\x01' # new line
         elif char == '@':
-            text += '\x0F' #print player name
+            text += '\x0F' # print player name
         elif char == '#':
-            text += '\x05\x40' #sets color to white
+            text += '\x05\x40' # sets color to white
         else:
             text += char
     return text

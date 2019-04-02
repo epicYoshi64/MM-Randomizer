@@ -72,7 +72,6 @@ class Item(object):
     def dungeonitem(self):
         return self.smallkey or self.bosskey or self.map or self.compass
 
-    # TODO: This is still OoT-specific, should be adjusted for MM
     @property
     def majoritem(self):
         if self.type == 'Event' or self.type == 'Shop' \

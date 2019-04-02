@@ -40,7 +40,7 @@ class BackgroundTask(object):
     def stop(self):
         self.running = False
 
-    #safe to call from worker
+    # safe to call from worker
     def queue_event(self, event):
         self.queue.put(event)
 
@@ -52,7 +52,7 @@ class BackgroundTask(object):
                 event = self.queue.get_nowait()
                 event()
                 if self.running:
-                    #if self is no longer running self.window may no longer be valid
+                    # if self is no longer running self.window may no longer be valid
                     self.window.update_idletasks()
         except queue.Empty:
             pass
@@ -103,7 +103,7 @@ class BackgroundTaskProgress(BackgroundTask):
     def close_pass(self):
         pass
 
-    #safe to call from worker thread
+    # safe to call from worker thread
     def update_status(self, text):
         self.queue_event(lambda: self.label_var.set(text))
 
@@ -281,7 +281,7 @@ class ToolTips(object):
                     return
             if widget.ui_tooltip_text_prev == text:
                 return
-                
+
             widget.ui_tooltip_text_prev = text
             cls.label.config(text=text)
             cls.popup.deiconify()
@@ -352,4 +352,3 @@ class SearchBox(tk.ttk.Combobox):
 
     def __select_callback(self, *dummy):
         self.config(values=list(self.options))
-
