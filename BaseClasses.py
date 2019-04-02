@@ -781,49 +781,6 @@ class Region(object):
     def __unicode__(self):
         return '%s' % self.name
 
-    '''
-Entrance object:
-Information about exits of Regions (being Entrances to someplace else)
-'''
-class Entrance(object):
-
-    def __init__(self, name='', parent=None):
-        self.name = name            # Name of the Entrance
-        self.parent_region = parent # Region this Entrance is in
-        self.connected_region = None # Region this Entrance connects to
-        self.target = None          # Only used in Rom.py (???)
-        self.addresses = None       # Only used in Rom.py (???)
-        self.spot_type = 'Entrance'
-        self.recursion_count = 0    # Used to stop infinite loops when calling `can_reach`
-        self.vanilla = None         # !!! NEVER USED
-        # Function that takes a state and determines if the Entrance is reachable
-        self.access_rule = lambda state: True
-
-    # Checks if the Entrance is reachable
-    # - Checks `self.access_rule` and if the region this Entrance is in is reachable
-    # - Then, if not already in `CollectionState.path`, inserts itself into the path
-    def can_reach(self, state):
-        if self.access_rule(state) and state.can_reach(self.parent_region):
-            return True
-
-        return False
-
-    # Connect this Entrance to the given Region. Also adds this Entrance
-    # to the `.entrances` of the given Region.
-    # (optional overriding of addresses/target/vanilla)
-    def connect(self, region, addresses=None, target=None, vanilla=None):
-        self.connected_region = region
-        self.target = target
-        self.addresses = addresses
-        self.vanilla = vanilla
-        region.entrances.append(self)
-
-    def __str__(self):
-        return str(self.__unicode__())
-
-    def __unicode__(self):
-        return '%s' % self.name
-
 '''
 Location object:
 Information about the location where an item can be or is placed.

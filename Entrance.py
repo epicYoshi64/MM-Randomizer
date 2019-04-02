@@ -8,7 +8,7 @@ class Entrance(object):
         self.addresses = None         # Only used in Rom.py (???)
         self.spot_type = 'Entrance'
         self.recursion_count = 0      # Used to stop infinite loops when calling `can_reach`
-        self.vanilla = None           # TODO: Is this ever used?
+        self.vanilla = None           # !!! Never used
         # Function that takes a state and determines if the Entrance is reachable
         self.access_rule = lambda state: True
 
@@ -46,4 +46,3 @@ class Entrance(object):
 
     def __unicode__(self):
         return '%s' % self.name
-
