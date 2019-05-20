@@ -1,6 +1,10 @@
 # MMRandomizer
 
-This is a randomizer for _The Legend of Zelda: Majora's Mask_ for the Nintendo 64. This program is currently not functional. I'm hoping that it will at least be able to generate spoiler logs by the end of the month. If you'd like to help out in any way, feel free to join the discord where we are coordinating things: https://discord.gg/2xpZYQq or submit a pull request, and somebody will probably merge it soon TM
+This is a randomizer for _The Legend of Zelda: Majora's Mask_ for the Nintendo 64. This program is currently not functional. If you'd like to help out in any way with this project, feel free to join the [Discord](https://discord.gg/2xpZYQq) where we are coordinating things.
+
+For a functional MM Randomizer project, look to DB's [Discord]( https://discord.gg/VdPC6DR) and [Github](https://github.com/az64/mm-rando). 
+
+For a more active and current version of that project, here's the community [Discord](https://discord.gg/8qbreUM) and project [Github](https://github.com/ZoeyZolotova/mm-rando). 
 
 # General Description
 
