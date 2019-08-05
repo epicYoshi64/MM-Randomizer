@@ -340,7 +340,7 @@ def get_dungeon_hint(spoiler, world, checked):
 
 
 def get_entrance_hint(spoiler, world, checked):
-    if world.entrance_shuffle == 'off':
+    if world.are_entrances_shuffled():
         return None
 
     entrance_hints = getHintGroup('entrance', world)

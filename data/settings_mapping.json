@@ -275,6 +275,18 @@
             "logic_earliest_adult_trade",
             "logic_latest_adult_trade"
           ]
+        },
+        {
+          "name": "entrance_shuffle_section",
+          "text": "Entrance Shuffle",
+          "row_span": 1,
+          "settings": [
+            "dungeon_shuffle",
+            "grotto_shuffle",
+            "indoor_entrance_shuffle",
+            "special_entrance_shuffle",
+            "overworld_entrance_shuffle"
+          ]
         }
       ]
     },

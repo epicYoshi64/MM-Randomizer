@@ -43,18 +43,18 @@ class World(object):
         self.__dict__.update(settings.__dict__)
         self.distribution = settings.distribution.world_dists[id]
 
-        if self.open_forest == 'closed' and self.entrance_shuffle in ['all-indoors', 'all']:
+        if self.open_forest == 'closed' and self.special_indoor_entrance_shuffle:
             self.open_forest = 'closed_deku'
 
         # rename a few attributes...
         self.keysanity = self.shuffle_smallkeys in ['keysanity', 'remove']
         self.check_beatable_only = not self.all_reachable
     
-        self.shuffle_dungeon_entrances = self.entrance_shuffle != 'off'
-        self.shuffle_grotto_entrances = self.entrance_shuffle in ['simple-indoors', 'all-indoors', 'all']
-        self.shuffle_interior_entrances = self.entrance_shuffle in ['simple-indoors', 'all-indoors', 'all']
-        self.shuffle_special_indoor_entrances = self.entrance_shuffle in ['all-indoors', 'all']
-        self.shuffle_overworld_entrances = self.entrance_shuffle == 'all'
+        self.shuffle_dungeon_entrances = self.dungeon_shuffle
+        self.shuffle_grotto_entrances = self.grotto_shuffle
+        self.shuffle_interior_entrances = self.indoor_entrance_shuffle
+        self.shuffle_special_indoor_entrances = self.special_entrance_shuffle
+        self.shuffle_overworld_entrances = self.overworld_entrance_shuffle
 
         self.disable_trade_revert = self.shuffle_interior_entrances or self.shuffle_overworld_entrances
 
@@ -346,6 +346,9 @@ class World(object):
             loc = prize_locs.pop()
             self.push_item(loc, item)
 
+
+    def are_entrances_shuffled(self):
+        return self.dungeon_shuffle or self.grotto_shuffle or self.indoor_entrance_shuffle or self.special_entrance_shuffle or self.overworld_entrance_shuffle
 
     def get_region(self, regionname):
         if isinstance(regionname, Region):
