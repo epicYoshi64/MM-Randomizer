@@ -152,7 +152,6 @@
           "row_span": 6,
           "settings": [
             "starting_age",
-            "entrance_shuffle",
             "triforce_hunt",
             "bombchus_in_logic",            
             "one_item_per_dungeon",
@@ -275,6 +274,18 @@
             "junk_ice_traps",
             "logic_earliest_adult_trade",
             "logic_latest_adult_trade"
+          ]
+        },
+        {
+          "name": "entrance_shuffle_section",
+          "text": "Entrance Shuffle",
+          "row_span": 1,
+          "settings": [
+            "dungeon_shuffle",
+            "grotto_shuffle",
+            "indoor_entrance_shuffle",
+            "special_entrance_shuffle",
+            "overworld_entrance_shuffle"
           ]
         }
       ]

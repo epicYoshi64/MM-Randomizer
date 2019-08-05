@@ -300,7 +300,7 @@ def set_entrances(worlds):
     for world in worlds:
         world.initialize_entrances()
 
-    if worlds[0].entrance_shuffle != 'off':
+    if worlds[0].are_entrances_shuffled():
         shuffle_random_entrances(worlds)
 
     set_entrances_based_rules(worlds)

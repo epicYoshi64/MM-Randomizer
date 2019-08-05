@@ -1266,7 +1266,7 @@ setting_infos = [
             be beatable.
             ''',
         disable        = {
-            'glitched'  : {'settings' : ['entrance_shuffle', 'mq_dungeons_random', 'mq_dungeons']},
+            'glitched'  : {'settings' : ["dungeon_shuffle", "grotto_shuffle", "special_entrance_shuffle", "indoor_entrance_shuffle", "overworld_entrance_shuffle", 'mq_dungeons_random', 'mq_dungeons']},
             'none'      : {'tabs'     : ['detailed_tab']},
         },
         shared         = True,
@@ -1636,53 +1636,75 @@ setting_infos = [
             'randomize_key': 'randomize_settings',
         },
     ),
-    Combobox(
-        name           = 'entrance_shuffle',
-        gui_text       = 'Entrance Shuffle',
-        default        = 'off',
-        choices        = {
-            'off':              'Off',
-            'dungeons':         'Dungeons Only',
-            'simple-indoors':   'Simple Indoors',
-            'all-indoors':      'All Indoors',
-            'all':              'All Indoors & Overworld',
-        },
-        gui_tooltip    = '''\
-            Shuffle entrances bidirectionally within different pools.
-
-            'Dungeons Only':
+    Checkbutton(
+        name='dungeon_shuffle',
+        gui_text='Shuffle Dungeon Entrances',
+        gui_tooltip='''\
             Shuffle dungeon entrances with each other, including Bottom 
             of the Well, Ice Cavern, and Gerudo Training Grounds. 
             However, Ganon's Castle is not shuffled.
             Additionally, the entrances of Deku Tree, Fire Temple and 
             Bottom of the Well are opened for both adult and child.
-
-            'Simple Indoors':
-            Shuffle dungeon entrances along with simple Grotto and
-            Interior entrances (i.e. most Houses and Great Fairies).
-
-            'All Indoors':
-            Extended version of 'Simple Indoors' with some extra entrances:
-            Adult Potion Shop, Windmill, Link's House, Temple of Time and
-            Dampe's Grave.
- 
-            'All Indoors & Overworld':
-            Same as 'All Indoors' but with Overworld loading zones shuffled
-            in a new separate pool. Owl drop positions are also randomized.
-
-            Note: If Interior or Overworld entrances are shuffled, trade timers 
-            are disabled and trade items don't revert when loading a save.
         ''',
+        default=False,
+        shared=True,
+        gui_params={
+            'randomize_key': 'randomize_settings',
+        },
+    ),
+    Checkbutton(
+        name           = 'grotto_shuffle',
+        gui_text       = 'Shuffle Grotto Entrances',
+        gui_tooltip    = '''\
+            Shuffle all grottos, including fairy fountains and the octorok grotto.
+        ''',
+        default        = False,
         shared         = True,
         gui_params     = {
             'randomize_key': 'randomize_settings',
-            'distribution':  [
-                ('off', 4),
-                ('dungeons', 1),
-                ('simple-indoors', 1),
-                ('all-indoors', 1),
-                ('all', 1),
-            ],
+        },
+    ),
+    Checkbutton(
+        name           = 'indoor_entrance_shuffle',
+        gui_text       = 'Shuffle Indoor Entrances',
+        gui_tooltip    = '''\
+            Shuffle simple Interior entrances (i.e. most Houses and Great Fairies).
+        ''',
+        default        = False,
+        disable        = {
+            False:          {'settings': ['special_entrance_shuffle']}
+        },
+        shared         = True,
+        gui_params     = {
+            'randomize_key': 'randomize_settings',
+        },
+    ),
+    Checkbutton(
+        name           = 'special_entrance_shuffle',
+        gui_text       = 'Shuffle Special Entrances',
+        gui_tooltip    = '''\
+            Shuffle Adult Potion Shop, Windmill, Link's House, 
+            Temple of Time and Dampe's Grave.
+        ''',
+        default        = False,
+        shared         = True,
+        gui_params     = {
+            'randomize_key': 'randomize_settings',
+        },
+    ),
+    Checkbutton(
+        name           = 'overworld_entrance_shuffle',
+        gui_text       = 'Shuffle Overworld Entrances',
+        gui_tooltip    = '''\
+            Overworld loading zones shuffled in a new separate pool. 
+            Owl drop positions are also randomized.
+            Note: Trade timers are disabled and 
+            trade items don't revert when loading a save.
+        ''',
+        default        = False,
+        shared         = True,
+        gui_params     = {
+            'randomize_key': 'randomize_settings',
         },
     ),
     Combobox(
